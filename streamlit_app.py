@@ -3,8 +3,8 @@ import pandas as pd
 import streamlit as st
 
 # Show the page title and description.
-st.set_page_config(page_title="Movies dataset", page_icon="🎬")
-st.title("🎬 Movies dataset")
+st.set_page_config(page_title="Overhead", page_icon="📊")
+st.title("Overhead Costs")
 st.write(
     """
     This app visualizes data from [The Movie Database (TMDB)](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata).
@@ -18,48 +18,63 @@ st.write(
 # reruns (e.g. if the user interacts with the widgets).
 @st.cache_data
 def load_data():
-    df = pd.read_csv("data/movies_genres_summary.csv")
+    #df = pd.read_csv(r'C:\Users\StashaL\Dropbox\PC\Desktop\pnwsu_overhead.csv')
+    df = pd.read_csv('/workspaces/movies-dataset/data/pnwsu_overhead.csv')
     return df
 
 
 df = load_data()
 
 # Show a multiselect widget with the genres using `st.multiselect`.
-genres = st.multiselect(
-    "Genres",
-    df.genre.unique(),
-    ["Action", "Adventure", "Biography", "Comedy", "Drama", "Horror"],
+#all instances of 'genres' should be changed to 'expenses'
+expenses = st.multiselect(
+    "Expense",
+    df.Expense.unique(),
+    ['BLUEHOST.COM',
+'GOOGLE WORKSPACE',
+'ELECTIONRUNNER.COM',
+'SHOPIFY',
+'UNIONIMPACT HTTPSUNIONIMP WA',
+'SURVEYMONKEY',
+'ZOOM',
+'JOTFORM INC',
+'MICROSOFT 365',
+'Ullico Insurance',
+'Online Store (T-Shirts)',
+'Printing',
+'TravelPerk Fees'
+],
 )
 
 # Show a slider widget with the years using `st.slider`.
-years = st.slider("Years", 1986, 2006, (2000, 2016))
+years = st.slider("Years", 2022, 2025, (2024, 2025))
 
 # Filter the dataframe based on the widget input and reshape it.
-df_filtered = df[(df["genre"].isin(genres)) & (df["year"].between(years[0], years[1]))]
+df_filtered = df[(df["Expense"].isin(expenses)) & (df["Year"].between(years[0], years[1]))]
 df_reshaped = df_filtered.pivot_table(
-    index="year", columns="genre", values="gross", aggfunc="sum", fill_value=0
+    index="Year", columns="Expense", values="Total", aggfunc="sum", fill_value=0
 )
-df_reshaped = df_reshaped.sort_values(by="year", ascending=False)
+df_reshaped = df_reshaped.sort_values(by="Year", ascending=False)
 
 
 # Display the data as a table using `st.dataframe`.
 st.dataframe(
     df_reshaped,
     use_container_width=True,
-    column_config={"year": st.column_config.TextColumn("Year")},
+    column_config={"Year": st.column_config.TextColumn("Year")},
 )
 
 # Display the data as an Altair chart using `st.altair_chart`.
 df_chart = pd.melt(
-    df_reshaped.reset_index(), id_vars="year", var_name="genre", value_name="gross"
+    df_reshaped.reset_index(), id_vars="Year", var_name="Expense", value_name="Total"
 )
 chart = (
     alt.Chart(df_chart)
     .mark_line()
     .encode(
-        x=alt.X("year:N", title="Year"),
-        y=alt.Y("gross:Q", title="Gross earnings ($)"),
-        color="genre:N",
+        x=alt.X("Year:N", title="Year"),
+        y=alt.Y("Total:Q", title="Total ($)"),
+        color="Expense:N",
     )
     .properties(height=320)
 )
