@@ -19,7 +19,7 @@ st.write(
 @st.cache_data
 def load_data():
     #df = pd.read_csv(r'C:\Users\StashaL\Dropbox\PC\Desktop\pnwsu_overhead.csv')
-    df = pd.read_csv('/workspaces/movies-dataset/data/pnwsu_overhead.csv')
+    df = pd.read_csv('data/pnwsu_overhead.csv')
     return df
 
 
