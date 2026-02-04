@@ -70,10 +70,10 @@ df_chart = pd.melt(
 )
 chart = (
     alt.Chart(df_chart)
-    .mark_line()
+    .mark_bar(size=10)
     .encode(
-        x=alt.X("Year:N", title="Year"),
-        y=alt.Y("Total:Q", title="Total ($)"),
+        x='Year',
+        y='Total',
         color="Expense:N",
     )
     .properties(height=320)
