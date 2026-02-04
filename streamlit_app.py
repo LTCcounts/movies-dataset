@@ -72,8 +72,8 @@ chart = (
     alt.Chart(df_chart)
     .mark_bar(size=10)
     .encode(
-        x='Year',
-        y='Total',
+        x='Year:N',
+        y='Total:Q',
         color="Expense:N",
     )
     .properties(height=320)
