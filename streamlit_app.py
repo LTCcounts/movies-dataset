@@ -18,8 +18,8 @@ import streamlit as st
 # Show the page title and description.
 st.set_page_config(page_title="PNWSU 2026", page_icon="📊")
 st.title("PNWSU 2026 Report")
-col1, col2, col3=st.columns([1,3,2])
-col1.image("data/Non-Transparent Basic Logo.png")
+
+st.image("data/Non-Transparent Basic Logo.png")
 
 st.write(
     """
