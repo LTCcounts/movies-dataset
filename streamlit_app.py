@@ -39,7 +39,9 @@ st.write(
     """
 )
 
-st.table({'Year':['Income', 'Expenses'], '2025':[479040.73, 302795.81],'2024':[376153.56, 61651.26],'2023':[352818.17, 157027.20]})  
+pnl = st.table({'Year':['Income', 'Expenses'], '2025':[479040.73, 302795.81],'2024':[376153.56, 61651.26],'2023':[352818.17, 157027.20]})  
+pnl_df = pd.DataFrame(pnl, index=false)
+st.table(pnl_df)
 
 def load_data2():
     df2 = pd.read_csv('data/pnwsu_dues.csv')
