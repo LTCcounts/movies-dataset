@@ -5,6 +5,9 @@ import streamlit as st
 # Show the page title and description.
 st.set_page_config(page_title="Overhead", page_icon="📊")
 st.title("Overhead Costs")
+col1, col2, col3=st.columns([1,3,2])
+col1.image("data/Non-Transparent Basic Logo.png")
+
 st.write(
     """
     PNWSU Treasurer's Dashboard - To help members dynamically view and visualize important staff union financial data.
