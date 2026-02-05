@@ -111,6 +111,7 @@ st.dataframe(
     df_reshaped,
     use_container_width=True,
     column_config={"Year": st.column_config.TextColumn("Year")},
+    st.column_config.NumberColumn("Total", format="$ %d"
 )
 
 # Display the data as an Altair chart using `st.altair_chart`.
