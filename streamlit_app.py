@@ -15,7 +15,6 @@ st.write(
 )
 
 def load_data2():
-    #df = pd.read_csv(r'C:\Users\StashaL\Dropbox\PC\Desktop\pnwsu_overhead.csv')
     df2 = pd.read_csv('data/pnwsu_dues.csv')
     return df2
 
@@ -67,7 +66,6 @@ st.dataframe(
 # reruns (e.g. if the user interacts with the widgets).
 @st.cache_data
 def load_data():
-    #df = pd.read_csv(r'C:\Users\StashaL\Dropbox\PC\Desktop\pnwsu_overhead.csv')
     df = pd.read_csv('data/pnwsu_gf_exp.csv')
     return df
 
