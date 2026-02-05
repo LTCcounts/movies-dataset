@@ -32,7 +32,7 @@ st.write(
     """
 )
 
-)
+
 st.write(
     """
     PNWSU 2024-2026 Total Income and Expenses
