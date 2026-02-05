@@ -24,9 +24,14 @@ col1.image("data/Non-Transparent Basic Logo.png")
 st.write(
     """
     This is the PNWSU Treasurer's Dashboard for the 2026 Annual Conference - To help members dynamically view and visualize important staff union financial data.
-    Este es un reporte para los miembros de PNWSU quien estan interesado en el salud financial del sindicato y quieren datos dynamicos para consideracion mas delicatos. 
     """
 )
+st.write(
+    """
+    Este es un reporte para los miembros de PNWSU quien estan interesado en el salud financial de sus sindicato y quieren datos dynamicos para consideracion mas delicatos. 
+    """
+)
+
 
 def load_data2():
     df2 = pd.read_csv('data/pnwsu_dues.csv')
