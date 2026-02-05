@@ -1,16 +1,30 @@
+#To-Do
+#Add Event Costs breakdown - average rates for each cost center? average per person? 
+#addd pdf link
+#add - big initiatives/updates this year 
+#Members per chapter on the dues table? 
+#Chapter account balances Jan 2023 - Jan 2026 - average $ + % growth per year 
+#one chapter slide to control ALL tables referring to chapters at once, section break titled "Chapter View" 
+#bother adding 2022 or no? If not, increase the slider minimum.
+#mobile-friendly aspect ratio
+#green page, green widgets, more arty overall
+#Where our members are based, heat map or something, highlight growth 
+
+
 import altair as alt
 import pandas as pd
 import streamlit as st
 
 # Show the page title and description.
-st.set_page_config(page_title="Overhead", page_icon="📊")
-st.title("Overhead Costs")
+st.set_page_config(page_title="PNWSU 2026", page_icon="📊")
+st.title("PNWSU 2026 Report")
 col1, col2, col3=st.columns([1,3,2])
 col1.image("data/Non-Transparent Basic Logo.png")
 
 st.write(
     """
-    PNWSU Treasurer's Dashboard - To help members dynamically view and visualize important staff union financial data.
+    This is the PNWSU Treasurer's Dashboard for the 2026 Annual Conference - To help members dynamically view and visualize important staff union financial data.
+    Este es un reporte para los miembros de PNWSU quien estan interesado en el salud financial del sindicato y quieren datos dynamicos para consideracion mas delicatos. 
     """
 )
 
@@ -110,9 +124,7 @@ df_reshaped = df_reshaped.sort_values(by="Year", ascending=False)
 st.dataframe(
     df_reshaped,
     use_container_width=True,
-    column_config={"Year": st.column_config.TextColumn("Year"),
-                    "Total": st.column_config.NumberColumn("Dollar values", format="$ %d")
-                  },
+    column_config={"Year": st.column_config.TextColumn("Year")},
 )
 
 # Display the data as an Altair chart using `st.altair_chart`.
