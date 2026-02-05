@@ -7,9 +7,7 @@ st.set_page_config(page_title="Overhead", page_icon="📊")
 st.title("Overhead Costs")
 st.write(
     """
-    This app visualizes data from [The Movie Database (TMDB)](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata).
-    It shows which movie genre performed best at the box office over the years. Just 
-    click on the widgets below to explore!
+    PNWSU Treasurer's Dashboard - To help members dynamically view and visualize important staff union financial data.
     """
 )
 
@@ -19,7 +17,7 @@ st.write(
 @st.cache_data
 def load_data():
     #df = pd.read_csv(r'C:\Users\StashaL\Dropbox\PC\Desktop\pnwsu_overhead.csv')
-    df = pd.read_csv('data/pnwsu_overhead1.csv')
+    df = pd.read_csv('data/pnwsu_gf_exp.csv')
     return df
 
 
@@ -30,24 +28,27 @@ df = load_data()
 expenses = st.multiselect(
     "Expense",
     df.Expense.unique(),
-    ['BLUEHOST.COM',
-'GOOGLE WORKSPACE',
-'ELECTIONRUNNER.COM',
-'SHOPIFY',
-'UNIONIMPACT HTTPSUNIONIMP WA',
-'SURVEYMONKEY',
-'ZOOM',
-'JOTFORM INC',
-'MICROSOFT 365',
-'Ullico Insurance',
-'Online Store (T-Shirts)',
-'Printing',
-'TravelPerk Fees'
+    ['Taxi',
+'Arbitration',
+'Subsciption Service',
+'Travelperk',
+'Venmo',
+'Parking',
+'Food',
+'Office Supplies',
+'Database',
+'Transaction Fees',
+'Court Reporting',
+'Accounting Services',
+'Hotel',
+'Labor Notes',
+'Misc',
+'Printing'
 ],
 )
 
 # Show a slider widget with the years using `st.slider`.
-years = st.slider("Years", 2022, 2025, (2024, 2025))
+years = st.slider("Year", 2022, 2025, (2024, 2025))
 
 # Filter the dataframe based on the widget input and reshape it.
 df_filtered = df[(df["Expense"].isin(expenses)) & (df["Year"].between(years[0], years[1]))]
