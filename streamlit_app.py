@@ -28,7 +28,7 @@ st.write(
 )
 st.write(
     """
-    Este es un reporte para los miembros de PNWSU quien estan interesado en el salud financial de sus sindicato y quieren datos dynamicos para consideracion mas delicatos. 
+    Este es un reporte para los miembros de PNWSU quien estan interesado en el salud financial de sus sindicato. Se ofrece datos dynamicos para consideracion mas profunda. 
     """
 )
 
@@ -63,7 +63,7 @@ dues = st.multiselect(
 
 
 # Show a slider widget with the years using `st.slider`.
-years2 = st.slider("Year", 2022, 2025, (2024, 2025),key="dues")
+years2 = st.slider("Year", 2023, 2025, (2024, 2025),key="dues")
 
 # Filter the dataframe based on the widget input and reshape it.
 df_filtered2 = df2[(df2["Chapter"].isin(dues)) & (df2["Year"].between(years2[0], years2[1]))]
