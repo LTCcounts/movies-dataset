@@ -27,9 +27,8 @@ def load_data():
 df = load_data()
 
 # Show a multiselect widget with the genres using `st.multiselect`.
-#all instances of 'genres' should be changed to 'expenses'
 expenses = st.multiselect(
-    "Expense",
+    "Expense Types",
     df.Expense.unique(),
     ['Taxi',
 'Arbitration',
@@ -49,6 +48,63 @@ expenses = st.multiselect(
 'Printing'
 ],
 )
+
+def load_data():
+    #df = pd.read_csv(r'C:\Users\StashaL\Dropbox\PC\Desktop\pnwsu_overhead.csv')
+    df2 = pd.read_csv('data/pnwsu_dues.csv')
+    return df2
+
+
+df2 = load_data()
+
+dues = st.multiselect(
+    "Dues Income",
+    df2.Chapter.unique(),
+    ['BSSU',
+'CWA9009',
+'KIWA',
+'LA Labor Fed',
+'NVLF',
+'PROTEC17',
+'SEIU121RN',
+'SEIU2015',
+'SEIU221',
+'SEIU925',
+'UDWA',
+'UFCW21',
+'UFCW3000',
+'UFCW367',
+'Working WA-FWC'
+],
+)
+
+
+# Show a slider widget with the years using `st.slider`.
+years = st.slider("Year", 2022, 2025, (2024, 2025))
+
+# Filter the dataframe based on the widget input and reshape it.
+df_filtered = df[(df["Chapter"].isin(expenses)) & (df["Year"].between(years[0], years[1]))]
+df_reshaped = df_filtered.pivot_table(
+    index="Year", columns="Chapter", values="Total", aggfunc="sum", fill_value=0
+)
+df_reshaped = df_reshaped.sort_values(by="Year", ascending=False)
+
+
+# Display the data as a table using `st.dataframe`.
+st.dataframe(
+    df_reshaped,
+    use_container_width=True,
+    column_config={"Year": st.column_config.TextColumn("Year")},
+)
+
+
+
+
+
+
+
+
+
 
 # Show a slider widget with the years using `st.slider`.
 years = st.slider("Year", 2022, 2025, (2024, 2025))
@@ -74,7 +130,7 @@ df_chart = pd.melt(
 )
 chart = (
     alt.Chart(df_chart)
-    .mark_bar(size=100)
+    .mark_bar(size=50)
     .encode(
         x='Year:N',
         y='Total:Q',
