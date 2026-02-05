@@ -44,7 +44,7 @@ dues = st.multiselect(
 
 
 # Show a slider widget with the years using `st.slider`.
-years2 = st.slider("Year", 2022, 2025, (2024, 2025),key=“dues”)
+years2 = st.slider("Year", 2022, 2025, (2024, 2025),key="dues")
 
 # Filter the dataframe based on the widget input and reshape it.
 df_filtered2 = df2[(df2["Chapter"].isin(dues)) & (df2["Year"].between(years2[0], years2[1]))]
@@ -96,7 +96,7 @@ expenses = st.multiselect(
 )
 
 # Show a slider widget with the years using `st.slider`.
-years = st.slider("Year", 2022, 2025, (2024, 2025),key=“exp”)
+years = st.slider("Year", 2022, 2025, (2024, 2025),key="exp")
 
 # Filter the dataframe based on the widget input and reshape it.
 df_filtered = df[(df["Expense"].isin(expenses)) & (df["Year"].between(years[0], years[1]))]
@@ -110,8 +110,9 @@ df_reshaped = df_reshaped.sort_values(by="Year", ascending=False)
 st.dataframe(
     df_reshaped,
     use_container_width=True,
-    column_config={"Year": st.column_config.TextColumn("Year")
-                  ,"Total": st.column_config.NumberColumn("Dollar values", format="$ %d")},
+    column_config={"Year": st.column_config.TextColumn("Year"),
+                    "Total": st.column_config.NumberColumn("Dollar values", format="$ %d")
+                  },
 )
 
 # Display the data as an Altair chart using `st.altair_chart`.
