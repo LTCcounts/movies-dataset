@@ -19,7 +19,7 @@ import streamlit as st
 st.set_page_config(page_title="PNWSU 2026", page_icon="📊")
 st.title("PNWSU 2026 Report")
 
-st.image("data/Non-Transparent Basic Logo.png")
+st.image("data/Greyscale_Logo.png")
 
 st.write(
     """
