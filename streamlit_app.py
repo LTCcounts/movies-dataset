@@ -48,7 +48,7 @@ dues = st.multiselect(
 years = st.slider("Year", 2022, 2025, (2024, 2025))
 
 # Filter the dataframe based on the widget input and reshape it.
-df_filtered2 = df2[(df2["Chapter"].isin(expenses)) & (df2["Year"].between(years[0], years[1]))]
+df_filtered2 = df2[(df2["Chapter"].isin(dues)) & (df2["Year"].between(years[0], years[1]))]
 df_reshaped2 = df_filtered2.pivot_table(
     index="Year", columns="Chapter", values="Total", aggfunc="sum", fill_value=0
 )
@@ -130,3 +130,4 @@ chart = (
     .properties(height=320)
 )
 st.altair_chart(chart, use_container_width=True)
+
