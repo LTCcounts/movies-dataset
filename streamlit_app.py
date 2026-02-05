@@ -34,7 +34,7 @@ st.write(
 
 if st.button("Table", width="stretch"):
     st.markdown(st.table({'Year':['Income', 'Expenses'], '2025':[479040.73, 302795.81],'2024':[376153.56, 61651.26],'2023':[352818.17, 157027.20]}))  
-    else ""
+
 
 
 
