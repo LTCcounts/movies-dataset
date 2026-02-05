@@ -71,7 +71,7 @@ df_chart = pd.melt(
 )
 chart = (
     alt.Chart(df_chart)
-    .mark_bar(size=30)
+    .mark_bar(size=100)
     .encode(
         x='Year:N',
         y='Total:Q',
